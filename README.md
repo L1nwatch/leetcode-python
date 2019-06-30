@@ -4,3 +4,7 @@
 
 同时做成 GitBook 的形式，[GitBook 链接](https://leetcode-6.gitbook.io/leetcode/)
 
+# 已完成清单
+
+* 1.两数之和
+* 2.两数相加
