@@ -14,6 +14,7 @@ class Solution:
             nums[i] = answer[i]
         return length
 # @lc code=end
+        # solution 2
         index_left = 0
         index_right = 1
         while index_right <= len(nums)-1:
