@@ -7,6 +7,7 @@
 # @lc code=start
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
+        # solution 1
         answer = list(set(nums))
         answer.sort()
         length = len(answer)
