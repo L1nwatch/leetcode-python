@@ -13,29 +13,29 @@
 #         self.right = right
 class Solution:
     def getMinimumDifference(self, root: TreeNode) -> int:
-        min_val = 10 **5
+        answer = 10 ** 5
+        pre_val = -1
+        result = list()
         stack = list()
         if root:
             stack.append(root)
         while len(stack) > 0:
             current_node = stack.pop()
             if current_node:
-                if current_node.left:
-                    stack.append(current_node.left)
-
-                    sub = abs(current_node.left.val-current_node.val)
-                    if sub < min_val:
-                        min_val = sub
                 if current_node.right:
                     stack.append(current_node.right)
-
-                    sub = abs(current_node.right.val-current_node.val)
-                    if sub < min_val:
-                        min_val = sub
                 stack.append(current_node)
                 stack.append(None)
+                if current_node.left:
+                    stack.append(current_node.left)
             else:
                 current_node = stack.pop()
-        return min_val
+                if pre_val == -1:
+                    pre_val = current_node.val
+                else:
+                    answer = min(answer,current_node.val - pre_val)
+                    pre_val = current_node.val
+
+        return answer
 # @lc code=end
 
