@@ -7,27 +7,15 @@
 # @lc code=start
 class Solution:
     def reverseStr(self, s: str, k: int) -> str:
-        # deal all 2k string
-        # deal with len(s) - 2k*n string
-
-
-        slow, fast = 0, 0
-        while fast < len(s):
-            if fast-slow == 2*k-1:
-                s = s[:slow] + s[slow:slow+k][::-1] + s[slow+k:]
-                slow = fast
-                continue
-
-            fast += 1
-            left_char_num = len(s)-1-fast
-
-            if left_char_num < k:
-                s = s[:fast+1]+s[fast+1:len(s)][::-1]
-                break
-            elif k <= left_char_num < 2*k:
-                s = s[:fast+1] + s[fast+1:fast+k+1][::-1]+s[fast+k+1:]
-                break
-
+        times = len(s)//(2*k)
+        for i in range(times):
+            s = s[:i*2*k] + s[i*2*k:i*2*k+k][::-1] + s[i*2*k+k:]
+        index = (len(s)//(2*k))*2*k
+        left_char_num = len(s)-index
+        if 0 < left_char_num < k:
+            s = s[:-left_char_num] + s[-left_char_num:][::-1]
+        elif k <= left_char_num < 2*k:
+            s = s[:index] + s[index:index+k][::-1]+s[index+k:]
 
         return s
 
