@@ -28,6 +28,7 @@ class Solution:
                     if next_col < len(grid[0]):
                         next_value = grid[next_row][next_col]
                     answer += max(grid[i][j]-next_value, 0)
+                    
                     # top
                     next_col = j
                     next_row = i-1
@@ -35,6 +36,7 @@ class Solution:
                     if next_row >= 0:
                         next_value = grid[next_row][next_col]
                     answer += max(grid[i][j]-next_value, 0)
+
                     # bottom
                     next_col = j
                     next_row = i+1
