@@ -8,7 +8,6 @@
 class Solution:
     def containsPattern(self, arr: List[int], m: int, k: int) -> bool:
         arr = ",".join([str(x) for x in arr])+","
-        print(arr)
         import re
         if k == 1:
             result = re.findall(r"(\d{"+str(m)+"})", arr)
