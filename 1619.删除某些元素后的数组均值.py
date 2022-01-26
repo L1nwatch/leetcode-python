@@ -7,5 +7,10 @@
 # @lc code=start
 class Solution:
     def trimMean(self, arr: List[int]) -> float:
+        length = len(arr)
+        arr.sort()
+        left = length // 20
+        right = length - length // 20
+        answer = sum(arr[left:right])/(right-left)
+        return answer
 # @lc code=end
-
