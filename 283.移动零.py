@@ -19,3 +19,18 @@ class Solution:
                 index += 1
 # @lc code=end
 
+
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        non_zero_index = 0
+        length = len(nums)
+        for i in range(length):
+            if nums[i] != 0:
+                nums[non_zero_index] = nums[i]
+                non_zero_index += 1
+        for i in range(non_zero_index,length):
+            nums[i] = 0
+        

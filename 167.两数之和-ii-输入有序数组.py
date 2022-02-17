@@ -17,3 +17,17 @@ class Solution:
             elif answer < target:
                 left += 1
 # @lc code=end
+
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        length = len(numbers)
+        left_index, right_index = 0, length - 1
+        while left_index < right_index:
+            temp_sum = numbers[left_index] + numbers[right_index]
+            if temp_sum > target:
+                right_index -= 1
+            elif temp_sum < target:
+                left_index += 1
+            else:
+                return [left_index + 1,right_index + 1]
+        return [-1,-1]
