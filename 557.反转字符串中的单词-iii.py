@@ -11,3 +11,11 @@ class Solution:
         return " ".join(result)
 # @lc code=end
 
+
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        answer = list()
+        words = s.split(" ")
+        for word in words:
+            answer.append(word[::-1])
+        return " ".join(answer)
