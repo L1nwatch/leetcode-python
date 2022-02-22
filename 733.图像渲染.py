@@ -25,3 +25,19 @@ class Solution:
         return image
 
 # @lc code=end
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, newColor: int) -> List[List[int]]:
+        row,column = len(image),len(image[0])
+
+        position = [(0,1),(0,-1),(1,0),(-1,0)]
+        done_point = set()
+        point_list = [(sr,sc)]
+        while len(point_list) > 0:
+            r,c = point_list.pop()
+            for move_x,move_y in position:
+                new_x,new_y = r+move_x,c+move_y
+                if 0 <= new_x < row and 0 <= new_y< column and image[new_x][new_y] == image[r][c] and (new_x,new_y) not in done_point:
+                    point_list.append((new_x,new_y))
+            image[r][c] = newColor
+            done_point.add((r,c))
+        return image
