@@ -20,3 +20,22 @@ class Solution:
             right = temp
         return left
 # @lc code=end
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        answer_list = list()
+        while head:
+            answer_list.append(head)
+            head = head.next
+        for i in range(len(answer_list)-1,-1,-1):
+            if i > 0:
+                answer_list[i].next = answer_list[i-1]
+            else:
+                answer_list[i].next = None
+        return answer_list[-1] if len(answer_list) > 0 else None
+            
