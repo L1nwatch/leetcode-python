@@ -26,3 +26,14 @@ class Solution:
             if n != 1 and n != 2 and n % 2 != 0:
                 return False
         return True
+
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        num = 1
+        for i in range(32):
+            if num == n:
+                return True
+            elif num > n:
+                return False
+            num = num << 1
+        return False
