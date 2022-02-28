@@ -13,3 +13,10 @@ class Solution:
         for each_data in nums[1:]:
             data ^= each_data
         return data
+
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        answer = nums[0]
+        for i in range(1,len(nums)):
+            answer ^= nums[i]
+        return answer

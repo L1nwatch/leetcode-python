@@ -14,3 +14,19 @@ class Solution:
         return count
 # @lc code=end
 
+
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        return bin(n).count("1")
+
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        return sum(1 for i in range(32) if n & (1 << i))
+
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        answer = 0
+        while n:
+            n &= n-1
+            answer += 1
+        return answer
