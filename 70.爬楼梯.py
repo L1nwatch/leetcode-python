@@ -15,3 +15,14 @@ class Solution:
         return b
 
 # @lc code=end
+
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        a = 0
+        b = 0
+        c = 1
+        for i in range(1,n+1):
+            a,b,c = b,c,b+c
+        return c
+
