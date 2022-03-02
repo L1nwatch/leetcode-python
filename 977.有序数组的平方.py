@@ -28,3 +28,18 @@ class Solution:
             pos -= 1
         return answer
 
+class Solution4:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        answer = [0]*n
+        i,j,pos = 0,n-1,n-1
+        while i <= j:
+
+            if (x:=nums[i]**2) > (y:=nums[j] ** 2):
+                answer[pos] = x
+                i += 1
+            else:
+                answer[pos] = y
+                j -= 1
+            pos -= 1
+        return answer
