@@ -19,3 +19,20 @@ class Solution:
         for word in words:
             answer.append(word[::-1])
         return " ".join(answer)
+    
+
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        answer = str()
+        length = len(s)
+        i = 0
+        while i < length:
+            begin = i
+            while i < length and s[i] != " ":
+                i += 1
+            for j in range(i-1,begin-1,-1):
+                answer += s[j]
+            while i < length and s[i] == " ":
+                i += 1
+                answer += " "
+        return answer
