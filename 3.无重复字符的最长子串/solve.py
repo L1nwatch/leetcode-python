@@ -34,3 +34,18 @@ class Solution2:
                 right += 1
             answer = max(answer, right - i + 1)
         return answer
+
+class Solution3:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        answer = 0
+        right = -1
+        substring = set()
+        length = len(s)
+        for i in range(length):
+            if i != 0:
+                substring.remove(s[i-1])
+            while right + 1 < length and s[right+1] not in substring:
+                substring.add(s[right+1])
+                right += 1
+            answer = max(answer, len(substring))
+        return answer

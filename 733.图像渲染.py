@@ -41,3 +41,24 @@ class Solution:
             image[r][c] = newColor
             done_point.add((r,c))
         return image
+
+class Solution3:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, newColor: int) -> List[List[int]]:
+        m,n = len(image),len(image[0])
+        from copy import deepcopy
+        answer = deepcopy(image)
+
+        seen = set()
+        from collections import deque
+        points = deque()
+        points.append((sr,sc))
+        answer[sr][sc] = newColor
+        while points:
+            x,y = points.pop()
+            for i,j in [(x+1,y),(x-1,y),(x,y+1),(x,y-1)]:
+                if 0 <= i < m and 0 <= j < n and (i,j) not in seen and image[i][j] == image[x][y]:
+                    seen.add((i,j))
+                    answer[i][j] = newColor
+                    points.append((i,j))
+        return answer
+        
