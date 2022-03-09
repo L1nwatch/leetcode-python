@@ -36,3 +36,27 @@ class Solution:
             return answer - 1
         else:
             return -1      
+
+class Solution2:
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        m,n = len(grid),len(grid[0])
+        from collections import deque
+        rotten = deque()
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 2:
+                    rotten.append((i,j,0))
+            
+        
+        seen = set(rotten)
+        d = 0
+        while rotten:
+            i,j,d = rotten.popleft()
+            for ni,nj in [(i+1,j),(i-1,j),(i,j+1),(i,j-1)]:
+                if 0 <= ni < m and 0 <= nj < n and grid[ni][nj] == 1:
+                    grid[ni][nj] = 2
+                    rotten.append((ni,nj,d+1))
+        
+        if any(1 in row for row in grid):
+            return -1
+        return d

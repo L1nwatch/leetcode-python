@@ -38,3 +38,22 @@ class Solution:
                row_answer.append(self.dfs(mat,i,j,0))
             answer.append(row_answer)
         return answer
+
+class Solution3:
+    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
+        m = len(mat)
+        n = len(mat[0])
+        answer = [[0]*n for i in range(m)]
+        from collections import deque
+        zero_points = deque([(i,j) for i in range(m) for j in range(n) if mat[i][j] == 0])
+        seen = set(zero_points)
+
+        while len(zero_points) > 0:
+            x,y = zero_points.popleft()
+            for nx,ny in [(x+1,y),(x-1,y),(x,y+1),(x,y-1)]:
+                if 0 <= nx < m and 0 <= ny < n and (nx,ny) not in seen:
+                    answer[nx][ny] = answer[x][y] + 1
+                    seen.add((nx,ny))
+                    zero_points.append((nx,ny))
+        return answer
+                
