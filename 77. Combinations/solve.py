@@ -108,3 +108,25 @@ class Solution:
     def combine(self, n: int, k: int) -> list:
         self.temp = list()
         return list(self.dfs(1, n, k))
+
+
+class Solution4:
+    def dfs(self,cur):
+        if len(self.temp) + self.n - cur + 1 < self.k:
+            return
+
+        if len(self.temp) == self.k:
+            import copy
+            yield copy.copy(self.temp)
+            return
+
+        self.temp.append(cur)
+        yield from self.dfs(cur+1)
+        self.temp.pop()
+        yield from self.dfs(cur+1)
+
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        self.n = n
+        self.k = k
+        self.temp = list()       
+        return list(self.dfs(1))

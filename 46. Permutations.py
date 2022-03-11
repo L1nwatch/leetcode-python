@@ -27,5 +27,19 @@ class Solution2:
         self.length = len(nums)
         self.dfs()
         return self.answer
-if __name__ == "__main__":
-    pass
+
+class Solution3:
+    def dfs(self,first=0):
+        if first == self.length:
+            self.answer.append(self.nums[:])
+        for i in range(first,self.length):
+            self.nums[i],self.nums[first] = self.nums[first],self.nums[i]
+            self.dfs(first+1)
+            self.nums[i],self.nums[first] = self.nums[first],self.nums[i]
+
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        self.answer = list()
+        self.nums = nums
+        self.length = len(nums)
+        self.dfs()
+        return self.answer

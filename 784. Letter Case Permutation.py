@@ -45,5 +45,17 @@ class Solution:
 
         return ["".join(x) for x in answer]
 
-if __name__ == "__main__":
-    pass
+class Solution3:
+    def letterCasePermutation(self, s: str) -> List[str]:
+        answer = [[]]
+        for char in s:
+            if not char.isdigit():
+                for j in range(len(answer)):
+                    answer.append(answer[j][:])
+                    answer[-1].append(char.upper())
+                    answer[j].append(char.lower())
+            else:
+                for i in range(len(answer)):
+                    answer[i].append(char)
+        return ["".join(x) for x in answer]
+        
