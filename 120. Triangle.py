@@ -11,3 +11,17 @@ class Solution:
             f[i][i] = f[i-1][i-1] + triangle[i][i]
         return min(f[n-1])
 
+class Solution2:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        rows = len(triangle)
+        f = [[0]*rows for _ in range(rows)]
+        for i in range(rows):
+            cols = len(triangle[i])
+            for j in range(cols):
+                if j == 0:
+                    f[i][j] = f[i-1][j] + triangle[i][j]
+                elif j == cols - 1:
+                    f[i][j] = f[i-1][j-1] + triangle[i][j]
+                else:
+                    f[i][j] = min(f[i-1][j-1],f[i-1][j]) + triangle[i][j]
+        return min(f[rows-1])
