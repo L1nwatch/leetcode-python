@@ -37,3 +37,7 @@ class Solution:
                 return False
             num = num << 1
         return False
+
+class Solution3:
+    def isPowerOfTwo(self, n: int) -> bool:
+        return n > 0 and ( n & (n-1) ) == 0

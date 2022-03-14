@@ -20,3 +20,10 @@ class Solution:
         for i in range(1,len(nums)):
             answer ^= nums[i]
         return answer
+
+class Solution2:
+    def singleNumber(self, nums: List[int]) -> int:
+        answer = nums[0]
+        for i in range(1,len(nums)):
+            answer ^= nums[i]
+        return answer

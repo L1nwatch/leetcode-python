@@ -30,3 +30,7 @@ class Solution:
             n &= n-1
             answer += 1
         return answer
+
+class Solution3:
+    def hammingWeight(self, n: int) -> int:
+        return sum([1 & (n >> 31-i) for i in range(32)])

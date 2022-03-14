@@ -23,3 +23,12 @@ class Solution:
             answer |= (n & 1) << (31 - i)
             n >>= 1
         return answer
+    
+class Solution3:
+    def reverseBits(self, n: int) -> int:
+        answer = 0
+
+        for i in range(32):
+            answer |= (n & 1) << (31-i)
+            n >>= 1
+        return answer
